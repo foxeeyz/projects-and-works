@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panificadora Delícias - Pães e Lanches</title>
+    <title>Sistema de Controle - Padaria DuValle</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom CSS -->
     <style>
         :root {
-            --primary-color: #8B4513;
-            --secondary-color: #D2691E;
-            --light-color: #FFF8DC;
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
         }
         
         body {
@@ -27,36 +30,125 @@
             color: white !important;
         }
 
-        .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            color: white;
-        }
-
-        .section-title {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-
-        .card {
+        .dashboard-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
             margin-bottom: 20px;
+            background: white;
         }
 
-        .card:hover {
+        .dashboard-card:hover {
             transform: translateY(-5px);
         }
 
-        .footer {
+        .card-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 40px 0;
+            border-radius: 10px 10px 0 0 !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .table-responsive {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .status-pending {
+            background-color: #f1c40f;
+            color: #000;
+        }
+
+        .status-completed {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .status-cancelled {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-card h6 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .menu-card h5 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .menu-card p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .menu-card .price {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -64,148 +156,234 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Panificadora Delícias</a>
+            <a class="navbar-brand" href="#"><i class="fas fa-bread-slice me-2"></i>Padaria DuValle</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#inicio">Início</a>
+                        <a class="nav-link" href="#dashboard"><i class="fas fa-chart-line me-1"></i>Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#produtos">Produtos</a>
+                        <a class="nav-link" href="#pedidos"><i class="fas fa-shopping-cart me-1"></i>Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#sobre">Sobre</a>
+                        <a class="nav-link" href="#produção"><i class="fas fa-industry me-1"></i>Produção</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contato">Contato</a>
+                        <a class="nav-link" href="#clientes"><i class="fas fa-store me-1"></i>Lanchonetes</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-4">Bem-vindo à Panificadora Delícias</h1>
-            <p class="lead">Os melhores pães e lanches da região</p>
-            <a href="#produtos" class="btn btn-warning btn-lg">Conheça Nossos Produtos</a>
-        </div>
-    </section>
-
-    <!-- Produtos Section -->
-    <section id="produtos" class="py-5">
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="py-4">
         <div class="container">
-            <h2 class="text-center section-title">Nossos Produtos</h2>
-            <div class="row">
+            <h2 class="mb-4">Dashboard - Padaria DuValle</h2>
+            
+            <!-- Menu de Pães -->
+            <div class="row mb-4">
                 <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Pães">
-                        <div class="card-body">
-                            <h5 class="card-title">Pães Artesanais</h5>
-                            <p class="card-text">Pães frescos feitos diariamente com ingredientes selecionados.</p>
-                        </div>
+                    <div class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pão de Hambúrguer">
+                        <h5>Pão de Hambúrguer DuValle</h5>
+                        <p>Pão especial 10cm, macio e saboroso</p>
+                        <p class="price">R$ 0,80/unidade</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Lanches">
-                        <div class="card-body">
-                            <h5 class="card-title">Lanches Especiais</h5>
-                            <p class="card-text">Lanches preparados com carnes selecionadas e pães frescos.</p>
-                        </div>
+                    <div class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pão de Xis">
+                        <h5>Pão de Xis DuValle</h5>
+                        <p>Pão tradicional 15cm, perfeito para xis</p>
+                        <p class="price">R$ 1,00/unidade</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Doces">
-                        <div class="card-body">
-                            <h5 class="card-title">Doces e Sobremesas</h5>
-                            <p class="card-text">Doces caseiros e sobremesas deliciosas para adoçar seu dia.</p>
+                    <div class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1612392062122-9b2ced1e4a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pão de Cachorro">
+                        <h5>Pão de Cachorro DuValle</h5>
+                        <p>Pão quente 20cm, ideal para cachorro-quente</p>
+                        <p class="price">R$ 0,90/unidade</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Pedidos do Dia -->
+                <div class="col-md-3">
+                    <div class="card dashboard-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-shopping-cart fa-2x mb-3 text-primary"></i>
+                            <h5 class="card-title">Pedidos Hoje</h5>
+                            <h2 class="card-text">18</h2>
+                            <p class="text-muted">Lanchonetes</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produção -->
+                <div class="col-md-3">
+                    <div class="card dashboard-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-bread-slice fa-2x mb-3 text-success"></i>
+                            <h5 class="card-title">Produção Hoje</h5>
+                            <h2 class="card-text">850</h2>
+                            <p class="text-muted">pães</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Clientes -->
+                <div class="col-md-3">
+                    <div class="card dashboard-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-store fa-2x mb-3 text-info"></i>
+                            <h5 class="card-title">Lanchonetes</h5>
+                            <h2 class="card-text">12</h2>
+                            <p class="text-muted">ativas</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Faturamento -->
+                <div class="col-md-3">
+                    <div class="card dashboard-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-dollar-sign fa-2x mb-3 text-warning"></i>
+                            <h5 class="card-title">Faturamento</h5>
+                            <h2 class="card-text">R$ 1.850</h2>
+                            <p class="text-muted">hoje</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pedidos do Dia -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Pedidos do Dia - Padaria DuValle</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Lanchonete</th>
+                                    <th>Pão de Hambúrguer</th>
+                                    <th>Pão de Xis</th>
+                                    <th>Pão de Cachorro</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lanchonete Central</td>
+                                    <td>50</td>
+                                    <td>30</td>
+                                    <td>100</td>
+                                    <td>180</td>
+                                    <td><span class="status-badge status-pending">Em Produção</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Detalhes</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Lanchonete Express</td>
+                                    <td>30</td>
+                                    <td>20</td>
+                                    <td>50</td>
+                                    <td>100</td>
+                                    <td><span class="status-badge status-completed">Entregue</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Detalhes</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Lanchonete Rápida</td>
+                                    <td>40</td>
+                                    <td>25</td>
+                                    <td>80</td>
+                                    <td>145</td>
+                                    <td><span class="status-badge status-pending">Pendente</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Detalhes</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controle de Produção -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Controle de Produção - Padaria DuValle</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de Pão DuValle</label>
+                                    <select class="form-select">
+                                        <option>Pão de Hambúrguer DuValle (10cm)</option>
+                                        <option>Pão de Xis DuValle (15cm)</option>
+                                        <option>Pão de Cachorro DuValle (20cm)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Quantidade</label>
+                                    <input type="number" class="form-control" placeholder="Quantidade a produzir">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Horário de Entrega</label>
+                                    <input type="time" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Registrar Produção</button>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Produção de Hoje - Padaria DuValle</h6>
+                            <div class="product-card">
+                                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Pão de Hambúrguer DuValle" class="product-image">
+                                <div class="product-info">
+                                    <h6>Pão de Hambúrguer DuValle</h6>
+                                    <p>Produzido: 300 unidades</p>
+                                    <p>Entregue: 120 unidades</p>
+                                    <p>Pendente: 180 unidades</p>
+                                </div>
+                            </div>
+                            <div class="product-card">
+                                <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Pão de Xis DuValle" class="product-image">
+                                <div class="product-info">
+                                    <h6>Pão de Xis DuValle</h6>
+                                    <p>Produzido: 200 unidades</p>
+                                    <p>Entregue: 75 unidades</p>
+                                    <p>Pendente: 125 unidades</p>
+                                </div>
+                            </div>
+                            <div class="product-card">
+                                <img src="https://images.unsplash.com/photo-1612392062122-9b2ced1e4a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Pão de Cachorro DuValle" class="product-image">
+                                <div class="product-info">
+                                    <h6>Pão de Cachorro DuValle</h6>
+                                    <p>Produzido: 350 unidades</p>
+                                    <p>Entregue: 230 unidades</p>
+                                    <p>Pendente: 120 unidades</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Sobre Section -->
-    <section id="sobre" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center section-title">Sobre Nós</h2>
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="lead">A Panificadora Delícias nasceu do amor pela boa comida e da paixão por pães artesanais. Com mais de 10 anos de experiência, nos dedicamos a oferecer produtos de alta qualidade, feitos com ingredientes selecionados e muito carinho.</p>
-                    <p>Nossa missão é proporcionar momentos especiais através de nossos produtos, mantendo a tradição da panificação artesanal com um toque de inovação.</p>
-                </div>
-                <div class="col-md-6">
-                    <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid rounded" alt="Nossa Panificadora">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato Section -->
-    <section id="contato" class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title">Entre em Contato</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <form>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Seu Nome">
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Seu Email">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Sua Mensagem"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <h4>Informações de Contato</h4>
-                    <p><strong>Endereço:</strong> Rua das Panificadoras, 123 - Centro</p>
-                    <p><strong>Telefone:</strong> (11) 1234-5678</p>
-                    <p><strong>Email:</strong> contato@panificadoradelicias.com.br</p>
-                    <p><strong>Horário de Funcionamento:</strong><br>
-                    Segunda a Sábado: 6h às 20h<br>
-                    Domingo: 6h às 14h</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>Panificadora Delícias</h4>
-                    <p>Sabor e qualidade em cada produto.</p>
-                </div>
-                <div class="col-md-6 text-end">
-                    <h4>Redes Sociais</h4>
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            <hr class="mt-4">
-            <div class="text-center">
-                <p>&copy; 2024 Panificadora Delícias. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
