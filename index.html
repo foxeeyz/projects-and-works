@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panificadora Delícias - Pães e Lanches</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --light-color: #FFF8DC;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-color);
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Panificadora Delícias</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#produtos">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4">Bem-vindo à Panificadora Delícias</h1>
+            <p class="lead">Os melhores pães e lanches da região</p>
+            <a href="#produtos" class="btn btn-warning btn-lg">Conheça Nossos Produtos</a>
+        </div>
+    </section>
+
+    <!-- Produtos Section -->
+    <section id="produtos" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Nossos Produtos</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Pães">
+                        <div class="card-body">
+                            <h5 class="card-title">Pães Artesanais</h5>
+                            <p class="card-text">Pães frescos feitos diariamente com ingredientes selecionados.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Lanches">
+                        <div class="card-body">
+                            <h5 class="card-title">Lanches Especiais</h5>
+                            <p class="card-text">Lanches preparados com carnes selecionadas e pães frescos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Doces">
+                        <div class="card-body">
+                            <h5 class="card-title">Doces e Sobremesas</h5>
+                            <p class="card-text">Doces caseiros e sobremesas deliciosas para adoçar seu dia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Sobre Nós</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="lead">A Panificadora Delícias nasceu do amor pela boa comida e da paixão por pães artesanais. Com mais de 10 anos de experiência, nos dedicamos a oferecer produtos de alta qualidade, feitos com ingredientes selecionados e muito carinho.</p>
+                    <p>Nossa missão é proporcionar momentos especiais através de nossos produtos, mantendo a tradição da panificação artesanal com um toque de inovação.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid rounded" alt="Nossa Panificadora">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Entre em Contato</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Seu Nome">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Seu Email">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Sua Mensagem"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h4>Informações de Contato</h4>
+                    <p><strong>Endereço:</strong> Rua das Panificadoras, 123 - Centro</p>
+                    <p><strong>Telefone:</strong> (11) 1234-5678</p>
+                    <p><strong>Email:</strong> contato@panificadoradelicias.com.br</p>
+                    <p><strong>Horário de Funcionamento:</strong><br>
+                    Segunda a Sábado: 6h às 20h<br>
+                    Domingo: 6h às 14h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Panificadora Delícias</h4>
+                    <p>Sabor e qualidade em cada produto.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <h4>Redes Sociais</h4>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="text-center">
+                <p>&copy; 2024 Panificadora Delícias. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
